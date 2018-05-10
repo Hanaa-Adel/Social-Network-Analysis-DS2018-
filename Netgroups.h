@@ -18,6 +18,7 @@ private:
 
 public:
 	Netgroups();
+	Netgroups(string group_name);
 };
 
 #endif
