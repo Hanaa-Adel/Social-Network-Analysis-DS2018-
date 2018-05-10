@@ -21,6 +21,14 @@ Users::Users(int User_id, string User_name, string User_password, int User_birth
 	//this-> User_password=User_password;
 	this-> User_password=User_password;
 	this-> User_birthYear=User_birthYear;
+	if(user_password.count( User_name ))
+	{
+		cout<<"repeated name!!"<<endl<<"Please Chose another name"<<endl;
+		
+	}
+	else
+		user_password[User_name]=User_password;
+
 } //parameterized constructor
 
  
@@ -150,4 +158,9 @@ void Users:: friendslist ()
 	//	check[i]=User_friends[i];
 	}*/
 	//return check;
+}
+
+void Users :: join_group(Netgroups groupName)
+{
+
 }
