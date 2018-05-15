@@ -1,70 +1,46 @@
-#ifndef USERS_H
-#define USERS_H
-
-#include <iostream>
-#include <string>
-#include <list>
-#include <fstream>
-#include <map>
-#include <vector>
-#include <sstream>
-#include <ostream>
-#include "Netgroups.h"
-#include "Posts.h"
-#include"Network.h"
-
-
+#ifndef NETWORK_H
+#define NETWORK_H
+//#include "NEW_LinkedList"
+#include "User.h"
+ #include <iomanip>
 using namespace std;
 
-class Users 
+class Users;
+class Network
 {
 private:
-	int User_id;        //to be unique user like the user name or the email which must be unique
-	string User_name;
-	string User_password;
-	int User_birthYear;
-
-	map<string,string> user_password;
-	map<int,string> User_identity; // take the id and the name of the user to be a unique user
-
-//	list<string>User_friends;
-	vector <Users *> User_friends;
-	list<int>User_friendId;
-
-	//list<Posts>User_post;
-
-	list<string>User_groups;
-
+//	list <Users> Netusers;
+	//list <string> Ufriends;
+	//map<int,Users> dataRecord;
+	//vector<Users*> dataRecord;
 public:
-		//friend istream& operator >> (istream& is, Users c);
-		//friend ostream& operator << (ostream& os,Users c);
-	Users();
-	//~Users();
+	map<string,string> ToLogIn;
+	//vector<Users>dataRecord;
+	map<int,Users> dataRecord;
+ //BinarySearchTree<person> tree;
+ int count;
 
-	Users(int User_id, string User_name, string User_password, int User_birthYear);
+	Network();
+	void readFile(string textname);
+	void write_data(string file_name);
+	void write_data2(string file_name);
+	void write_data3(string file_name);
+//	void add_user (Users Netuser);
+	Users getcaseone();
+	void userMenu(int name, string password);
+	int add_connection(int userId,int friendId); //returns "1" if connected is done and "0" otherwise(if any of them is invalid)
 
-	void setName(string User_name );
-	void setId(int User_id );
-	void setPassword(string User_password );
-	void setBirth(int User_birthYear);
+	int remove_connection (int userId, int friendId); //returns "1" if connected is done and "0" otherwise(if any of them is invalid)
 
-   string getName();
-   int    getId();
-   string getPassword();
-   int    getBirth();
+	//int get_id (string name); //take the user name and return its id or 0 if this name is invalid
 
-    void add_friend(Users &friend_name);
-	void remove_friend(Users &Friend_name);
-	int  get_friendsNumber();
-	void friendslist ();
+	string get_name (int id);
 
-//	void add_post(Posts post);
-	int get_postsNumber();
+	list<string> get_friends( string name); // find all fiends of that user
 
-	void join_group(Netgroups groupName);
-//	void remove_group(Netgroups groupName);
-	
+	//list<string> get_groups(string name); //find all groups whiche joined by that user
 
+	//list<Posts> get_posts(string name); // find all posts of that user
 };
 
 #endif
